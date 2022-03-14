@@ -1,13 +1,13 @@
 require_relative 'factorial'
 
-result = factorial(5)
-unless result == 120
-  raise StandardError.new("Expected 5! to eq 120")
+def assert_factorial_equals(number, expected_factorial)
+  actual_factorial = factorial(number)
+  unless actual_factorial == expected_factorial
+    raise StandardError.new("Expected #{number}! to be #{expected_factorial} but is #{actual_factorial}")
+  end
 end
 
-result = factorial(4)
-unless result == 24
-  raise StandardError.new("Expected 4! to eq 24")
-end
+assert_factorial_equals(5, 120)
+assert_factorial_equals(4, 24)
 
 puts "Success!"
